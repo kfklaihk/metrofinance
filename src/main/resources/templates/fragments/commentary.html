@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+  <meta charset="UTF-8">
+</head>
+<body>
+
+  <div  th:fragment="hasdata">
+  <div class="table table-bordered">
+      <table>
+    <thead>
+       <tr class="no-wrap">
+        <th th:text="證劵"></th>
+        <th th:text="大行"></th>
+        <th th:text="目標"></th>
+        <th th:text="更新日期"></th>
+        <th th:text="報告"></th>
+       </tr> 
+      </thead>
+    <tbody>
+    
+        <tr th:each="row: ${commlist}">
+            <td  th:text="${row.stkname}"></td>
+            <td  th:text="${row.bhouse}"></td>
+            <td  th:text="${row.target}"></td>
+            <td th:text="${row.updated_on}"></td>
+            <td th:text="${row.content}"></td>
+        </tr>
+    </tbody>
+    
+</table>
+</div>
+  </div>
+  <div  th:fragment="nodata">no data
+</div>
+</body>
+</html>

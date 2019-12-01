@@ -1,0 +1,31 @@
+ .no-wrap {
+        white-space: nowrap;
+    }
+
+.wcontainer {
+	clear: both;
+   height: 300px;
+   width :100%;
+   overflow: hidden;
+}
+
+.container {
+	clear: both;
+   height: 500px;
+   width :100%;
+   overflow: auto;
+}
+    
+.right {
+    width: 70%;
+    float: right;
+    overflow: auto;
+}
+
+.left {
+    float: none; /* not needed, just for clarification */
+    
+    /* the next props are meant to keep this block independent from the other floated one */
+    width: 30%;
+    overflow: auto;
+}

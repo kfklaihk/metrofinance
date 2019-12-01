@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-Frame-Options" content="deny">
+        
+
+<title>新城財經台大行報告</title>
+<link href="webjars/bootstrap/4.1.0/css/bootstrap.min.css"
+        rel="stylesheet">
+        <link href="css/custom.css"
+		rel="stylesheet">
+</head>
+<script src="webjars/jquery/3.3.1/jquery.min.js"></script>
+        <script src="webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<body>
+<script>
+$(function () {
+	// $("#wpage").html('<object data="https://www.dbpower.com.hk/ch/news/itd" width=100% height=100% />');
+	 
+  $("#stk_list").change(function () {
+            
+            var stk = $("#stk_list").val();
+           // var stk_1 = (stk.split("("))[1].replace(")",".HK");
+           var stk_1 = parseInt((stk.split("("))[1].replace(")","")).toString();
+         /*   if (stk_1.length>7) {
+            	stk_1=stk_1.substring(1);
+            }
+       */
+
+                    $("#result").load('/getbystkname/'+stk);
+                    window.open('https://www.tradingview.com/symbols/HKEX-'+stk_1+'/technicals/','證券分析','height=400,width=300');
+               //     $("#wpage").load('https://phantomjscloud.com/api/browser/v2/ak-qqh6m-5qdy2-cmmmm-fvcfj-65ew1/?request={url:%22https://finance.yahoo.com/quote/'+stk_1+'%22,renderType:%22html%22}');
+                //   $("#wpage").load('https://www.tradingview.com/symbols/HKEX-388/technicals/');
+        });
+		
+		$("#b_list").change(function () {
+            
+            var bhouse = $("#b_list").val();
+            
+
+
+                    $("#result").load('/getbybhouse/'+bhouse);
+             //       $("#wpage").html('');
+        });
+		
+ });
+ </script>
+<div class="container">
+        <div class="left">
+  <div id="uselect">
+
+    <select id="stk_list" name="stk_list">
+    <option th:each="stklist : ${stk}" th:value="${stklist}" th:text="${stklist}">
+</option>
+    
+</select><br>
+<select id="b_list" name="b_list">
+    <option th:each="bhouselist : ${bhouse}" th:value="${bhouselist}" th:text="${bhouselist}">
+</option>
+    
+    
+</select>
+</div>
+</div>
+<div class="right" id="result">
+
+
+
+</div>
+</div><br>
+<div id="wpage" class="wcontainer"></div>
+</body>
+</html>
